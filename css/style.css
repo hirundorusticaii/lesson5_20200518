@@ -1,0 +1,251 @@
+@charset "UTF-8";
+/* CSSにも文字コードを指定できるの知ってた？ */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    /***** なんで62.5%なのかわからない人は調べて確認しておこう *****/
+    /* htmlのデフォルト設定が16pxの62.5%、10pxへ変更される。 */
+    /* なので1em＝10pxになるので、計算が楽になります */
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    color: #000c15;
+    background-color: #e8edf8;
+    font-family: メイリオ, Meiryo, Osaka, “ヒラギノ角ゴ Pro W3”, “Hiragino Kaku Gothic Pro”, “ＭＳ Ｐゴシック”, “MS PGothic”, sans-serif;
+}
+.clear::after{
+    /* clearfix */
+    content: " ";
+    display: block;
+    clear: both;
+}
+/* ヘッダー */
+header,footer{
+    text-align: center;
+    background: #000c15;
+}
+h1{
+    color: #fff;;
+}
+/* ニュース */
+.news{
+    width: 700px;
+    margin: auto;
+}
+.news section{
+    padding: 5px;
+    background-color: #fff;
+}
+.news  article{
+    text-align: left;
+}
+.news  h3{
+    font-size: 1.6rem;
+    width: 66%;
+    /* はみ出した文字の処理 */
+    white-space: nowrap;
+    /* 改行は半角1スペースへ箱から飛び出す */
+    overflow: hidden;
+    /* はみ出た場所は隠す。スクロールバーもない */
+    text-overflow: ellipsis;
+    /* 隠れた場所は”…”で表示 */
+    /* ここまで */
+    display: inline-block;
+}
+.news  ul{
+    width: 32%;
+    font-size: 1.0rem;
+    color: #999;
+    list-style: none;
+    display: inline-block;
+}
+.news  li{
+    /* padding: ; */
+    float: left;
+}
+.news-site{
+    width: 120px;
+    /* はみ出した文字の処理 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* メイン */
+main{
+    width: 1000px;
+    font-size: 1.4rem;
+    margin: 10px auto;
+    display: flex;
+}
+main article{
+    width: 700px;
+}
+main section{
+    margin: 5px;
+    padding: 5px;
+    background-color: #fff;
+}
+
+main h3{
+    text-align: center
+}
+section p{
+    padding: 5px 0;
+    color: #555;
+}
+.icon{
+    margin: 5px;
+    width: 100px;
+    border-radius: 50%;
+    float:left;
+}
+main aside{
+    width: 300px;
+}
+#bzb h3{
+    text-decoration: line-through;
+}
+/* サイドバー */
+.member{
+    text-align: center;
+}
+.member-icon{
+    width: 80px;
+    border-radius: 50%;
+}
+/* フッター */
+footer p{
+    color: #fff;
+}
+
+h2{
+    margin-top: 10px;
+}
+
+/* %とremをいじるとレイアウトが崩壊するのですべてクリア */
+
+@media screen and (min-width:640px) and (max-width:1023px) {
+    /*tablet用のcssを記述*/
+    main{
+        display: initial;
+    }
+    main article{
+        margin: auto;
+    }
+    .member{
+        display: inline-block;
+    }
+    
+    main aside{
+        width: 700px;
+        margin: auto;
+    }
+    /* ↑newsの形式をコピー */
+
+}
+
+@media screen and (max-width:639px) {
+    /*スマホ用のcssを記述*/
+    /* 全体の文字の大きさをUP */
+    html{
+        font-size: 100%;
+    }
+
+    body{
+        background-color: #dc143c;
+    }
+
+    /* TOP NEWS部分の調整 */
+    .news  h3{
+        width: 100%;
+        white-space: initial;
+        overflow: initial;
+        text-overflow: initial;
+    }
+    .news-site{
+        white-space: initial;
+        overflow: initial;
+        text-overflow: initial;
+    }
+
+    .news{
+        width: 100%;
+    }
+
+    .news ul{
+        width: 100%;
+    }
+    .news li{
+        width: 50%;
+    }
+ 
+      /* 〇文章を全文表示 */
+      /* 〇日付等を横並びにしないで縦へ */
+      /* 〇画面一杯（100%）に白枠が来ている */
+      
+      /* NEWS部分の調整 */
+    main{
+        width: 100%;
+        display: initial;
+    }
+
+    main section{
+        margin: 10px;
+        padding: 10px;
+        background:#333;
+    }
+    
+    main article{
+        width: 100%;
+        margin: auto;
+    }
+    
+    main h3{
+        text-align: initial;
+        color: white;
+    }
+    
+    main section{
+        text-align: center;
+    }
+    
+    main section p{
+        text-align: left;
+        color: #e6e6e6;
+    }
+
+    /* 〇記事題名、アイコン、本文の順番に縦に配置 */
+    /* 〇アイコンが大きくセンターへ */
+    .icon{
+        float: initial;
+        width: 50%;
+        margin: initial;
+        border: solid 5px white;
+        margin: 10px 10px;
+    }
+    
+    /* 編集部部分の調整 */
+    .member{
+        display: inline-block;
+    }
+    main aside{
+        width: 100%;
+    }
+
+    .member-icon{
+        border: solid 2px white; 
+    }
+
+        /* 縦並びにするべき？ */
+}
+
+
+/* 2019新定番 560px 960px */
+/* 640px 1024px */
+
+/* 2020年3月 タブレット縦(max-width:896px)
+          スマホ縦(max-width:480px) */
